@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.TestScenarios.TC002_ValidateResponseStatusCodeAndStatusLine">
+      <class name="com.TestScenarios.TC011_DELETE">
         <methods>
-          <include name="GetWeatherDetails"/>
+          <include name="deleteEmpRecord"/>
         </methods>
-      </class> <!-- com.TestScenarios.TC002_ValidateResponseStatusCodeAndStatusLine -->
+      </class> <!-- com.TestScenarios.TC011_DELETE -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

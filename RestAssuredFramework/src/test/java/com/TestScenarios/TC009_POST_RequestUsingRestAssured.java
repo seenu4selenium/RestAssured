@@ -39,26 +39,37 @@ public class TC009_POST_RequestUsingRestAssured {
 	@Test
 	public void RegistrationSuccessful() {
 		// Use local JsonServer URL for POST operations
-		 RestAssured.baseURI = "https://demoqa.com/customer/register";
-		//RestAssured.baseURI = "http://localhost:3000";
+		// RestAssured.baseURI = "https://demoqa.com/customer/register";
+		RestAssured.baseURI = "http://localhost:3000";
 
 		RequestSpecification request = RestAssured.given();
 
 		JSONObject requestParams = new JSONObject();
-		requestParams.put("FirstName", "Virender1");
-		requestParams.put("LastName", "Singh1");
-		requestParams.put("UserName", "63userf2d3d20111");
-		requestParams.put("Password", "password11");
-		requestParams.put("Email", "ed26dff39@gmail.com1");
+		requestParams.put("FirstName", "Ashok");
+		requestParams.put("LastName", "Puli");
+		requestParams.put("UserName", "sdgfsdg63userf2d3d20111");
+		requestParams.put("Password", "sdgdspassword11");
+		requestParams.put("Email", "AshokPuli@gmail.com1");
+		requestParams.put("City", "Hyderabad");
 
 		request.body(requestParams.toJSONString());
-		 Response response = request.post("/register");
-		//Response response = request.post("/Persons");
+		 //Response response = request.post("/register");
+		Response response = request.post("/Employee");
 
 		ResponseBody body = response.getBody();
 		System.out.println(response.body().asString());
 
 		System.out.println("response.statusCode()" + response.statusCode());
+		System.out.println("response.lastname(): " + response.jsonPath().getString("LastName"));
+		
+		if(response.jsonPath().getString("LastName").equals("Puli")) {
+			System.out.println("Lastname is displayed as expected....");
+		}else {
+			System.out.println("Lastname is NOT displayed as expected....");
+
+		}
+		
+		
 //		if (response.statusCode() == 200) {
 //			// Deserialize the Response body into RegistrationFailureResponse
 //			RegistrationFailureResponse responseBody = body.as(RegistrationFailureResponse.class);
